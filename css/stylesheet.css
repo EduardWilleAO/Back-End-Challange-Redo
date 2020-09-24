@@ -11,7 +11,11 @@ body {
     background-size: cover;
 
     display: grid;
-    grid-template-columns: auto;
+    /* 6x320px because there fit a total of 6 lists on the base page before it needs to extend, 
+    * before reaching 5/6 it will spread out the lists with equal margins over the page.
+    * I want the distance to always be the same, not when there are less lists larger space in between.
+    */
+    grid-template-columns: 320px 320px 320px 320px 320px 320px;
     cursor: default;
 }
 
@@ -21,7 +25,6 @@ body {
     height: 100%;
     width: 300px;
     display: inline-block;
-    margin: 0px 10px;
     float: left;
 }
 .list {
@@ -43,7 +46,12 @@ body {
     width: 93%;
 }
 .add_task {
-    padding: 10px 0px 0px 0px;
+    cursor: pointer;
+}
+.last_list {
+    opacity: 0.6;
+}
+.add_list {
     cursor: pointer;
 }
 

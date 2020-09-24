@@ -3,12 +3,7 @@
 require "connect.php";
 require "modal/modal.php";
 
-$sql = 'SELECT * FROM list';
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-$result = $stmt->fetchAll();
-
-
+$result = getLists($conn);
 
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -35,5 +30,11 @@ $result = $stmt->fetchAll();
         </div>
     </div>
     <?php } ?>
+    
+    <div class="list_wrapper">
+        <div class="list last_list">
+            <div class="add_list">+ Add another task</div>
+        </div>
+    </div>
 </body>
 </html>
