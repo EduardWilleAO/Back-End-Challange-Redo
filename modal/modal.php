@@ -44,6 +44,9 @@ function wordSplitting($word){
 	}
 }
 
+/*
+* Functions for updating list contents within the database
+*/
 function createList($conn, $title){
 	$sql = "INSERT INTO list (title) VALUES (:title)";
 	$stmt = $conn->prepare($sql);
@@ -51,8 +54,6 @@ function createList($conn, $title){
 	$stmt->execute();
 
 	$conn = null;
-
-	header ('Location: index.php');
 }
 function deleteList($conn, $id){
 	$sql = "DELETE FROM list WHERE id=:id";
@@ -61,8 +62,6 @@ function deleteList($conn, $id){
     $stmt->execute();
 
     $conn = null;
-
-    header("Location: index.php");
 }
 function updateList($conn, $id, $title){
 	$sql = "UPDATE list SET title=:title WHERE id=:id";
@@ -72,8 +71,6 @@ function updateList($conn, $id, $title){
     $stmt->execute();
 
     $conn = null;
-
-    header("Location: index.php");
 }
 
 ?>

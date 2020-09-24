@@ -3,8 +3,16 @@
 require "connect.php";
 require "modal/modal.php";
 
+$redirect = "";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	createList($conn, $_POST["title"]);
+	$redirect = "index.php";
+}
+
+if($redirect != ""){
+	header ('Location: ' . $redirect);
+	exit();
 }
 
 ?>

@@ -4,12 +4,18 @@ require "connect.php";
 require "modal/modal.php";
 
 $result = getSpecificList($conn, $_GET["id"]);
+$redirect = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     updateList($conn, $_GET["id"], $_POST["title"]);
+	$redirect = "index.php";
+} 
+
+if($redirect != ""){
+    header("Location: " . $redirect);
+	exit();
 }
 
-$conn = null;
 ?>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
