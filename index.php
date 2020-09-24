@@ -15,7 +15,7 @@ $result = getLists($conn);
     <?php foreach($result as $row) { ?>
     <div class="list_wrapper">
         <div class="list">
-            <h4 class="title"><?php print $row["name"]; ?></h4>
+            <h4 class="title"><?php print $row["name"]; ?><a href="delete.php" class="delete_list">X</a></h4>
             <div class="task_list">
                 <?php $result2 = getSpecificTasks($conn, $row["id"]); ?>
                 <?php foreach($result2 as $row2) { ?>
@@ -26,14 +26,14 @@ $result = getLists($conn);
                 </div>
                 <?php } ?>
             </div>
-            <div class="add_task">+ Add another task</div>
+            <a href="" class="add_task">+ Add another task</div>
         </div>
     </div>
     <?php } ?>
     
     <div class="list_wrapper">
         <div class="list last_list">
-            <div class="add_list">+ Add another task</div>
+            <a href="create.php" class="add_list">+ Add another task</div>
         </div>
     </div>
 </body>

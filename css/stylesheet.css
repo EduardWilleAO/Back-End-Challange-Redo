@@ -1,7 +1,9 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
+    color: black;
     user-select: none;
+    text-decoration: none;
 }
 body {
     background: url(../img/background.jpg);
@@ -16,7 +18,7 @@ body {
     * I want the distance to always be the same, not when there are less lists larger space in between.
     */
     grid-template-columns: 320px 320px 320px 320px 320px 320px;
-    cursor: default;
+    cursor: default!important;
 }
 
 .list_wrapper {
@@ -54,7 +56,16 @@ body {
 .add_list {
     cursor: pointer;
 }
+.delete_list {
+    float: right;
+    color: red;
+    cursor: pointer;
+}
 
+.title {
+    color: black!important;
+    text-shadow: none!important;
+}
 .description {
     margin: 10px 0 10px 5px;
 }
@@ -69,7 +80,7 @@ body {
     color: white;
     border-radius: 3px;
     padding: 3px 10px;
-    text-shadow: 0px 0px 3px black
+    text-shadow: 0px 0px 3px black;
 }
     .NotStarted {
         width: 91px;
@@ -87,6 +98,27 @@ body {
 h4 {
     margin: 0;
     padding: 0px 0px 10px 0px;
+}
+select {
+    border: none;
+    background: #0095FF;
+}
+input, textarea {
+    color: white;
+    text-shadow: none!important;
+    background: #ECECEC;
+    border-radius: 3px;
+    padding: 3px 10px;
+    text-shadow: 0px 0px 3px black;
+    margin-left: 0 !important;
+    border: none;
+    resize: none;
+}
+
+.submit {
+    margin: 10px 0px 0px 0px;
+    text-shadow: 0px 0px 3px black!important;
+    background: #D3D3D3;
 }
 
 ::-webkit-scrollbar {
