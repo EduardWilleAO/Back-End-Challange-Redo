@@ -9,13 +9,19 @@ $result = getLists($conn);
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link href="css/stylesheet.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/6185da5d11.js" crossorigin="anonymous"></script>
     <title></title>
 </head>
 <body>
     <?php foreach($result as $row) { ?>
     <div class="list_wrapper">
         <div class="list">
-            <h4 class="title"><?php print $row["name"]; ?><a href="delete.php" class="delete_list">X</a></h4>
+            
+            <h4 class="title"><?php print $row["title"]; ?>
+                <a href="delete.php?id=<?php print $row["id"] ?>" class="delete_list"><i class="far fa-trash-alt"></i></a>
+                <a href="update.php?id=<?php print $row["id"] ?>" class="update_list"><i class="fas fa-wrench"></i></a>
+            </h4>
+            
             <div class="task_list">
                 <?php $result2 = getSpecificTasks($conn, $row["id"]); ?>
                 <?php foreach($result2 as $row2) { ?>

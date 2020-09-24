@@ -10,6 +10,14 @@ function getLists($conn){
 	$result = $stmt->fetchAll();
 	return $result;
 }
+function getSpecificList($conn, $id){
+	$sql = 'SELECT * FROM list WHERE id=:id';
+	$stmt = $conn->prepare($sql);
+	$stmt->BindParam(":id", $id);
+	$stmt->execute();
+	$result = $stmt->fetchAll();
+	return $result;
+}
 
 /**
 * This function returns only a single task belonging to a spefic list given with $id.
@@ -31,9 +39,41 @@ function getSpecificTasks($conn, $id){
 */
 function wordSplitting($word){
 	$arr = preg_split('/(?=[A-Z])/', $word);
-	foreach ($arr as $key => $value) {
-	echo $value . " ";
+	foreach ($arr as $key => $row) {
+	echo $row . " ";
 	}
+}
+
+function createList($conn, $title){
+	$sql = "INSERT INTO list (title) VALUES (:title)";
+	$stmt = $conn->prepare($sql);
+	$stmt->bindParam(":title", $title);
+	$stmt->execute();
+
+	$conn = null;
+
+	header ('Location: index.php');
+}
+function deleteList($conn, $id){
+	$sql = "DELETE FROM list WHERE id=:id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+
+    $conn = null;
+
+    header("Location: index.php");
+}
+function updateList($conn, $id, $title){
+	$sql = "UPDATE list SET title=:title WHERE id=:id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(":id", $id);
+    $stmt->bindParam(":title", $title);
+    $stmt->execute();
+
+    $conn = null;
+
+    header("Location: index.php");
 }
 
 ?>

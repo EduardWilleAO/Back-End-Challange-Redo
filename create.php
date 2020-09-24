@@ -1,16 +1,10 @@
 <?php
 
+require "connect.php";
+require "modal/modal.php";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
-	require "connect.php";
-
-	$sql = "INSERT INTO list (name) VALUES (:name)";
-	$stmt = $conn->prepare($sql);
-	$stmt->bindParam(":name", $_POST["title"]);
-	$stmt->execute();
-
-	$conn = null;
-
-	header ('Location: index.php');
+	createList($conn, $_POST["title"]);
 }
 
 ?>
@@ -22,12 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <body>
 	<form method="post">
-	<div class="list_wrapper">
-		<div class="list">
-			<input name="title" class="title" placeholder="List Name"/>
-			<input class="submit" type="submit"/>
+		<div class="list_wrapper">
+			<div class="list">
+				<input name="title" class="title" placeholder="List title"/>
+				<input class="submit" type="submit"/>
+			</div>
 		</div>
-	</div>
 	</form>	
 </body>
 </html>
