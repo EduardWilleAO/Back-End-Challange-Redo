@@ -1,0 +1,92 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+body {
+    background: url(../img/background.jpg);
+    background-attachment: fixed;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.list_wrapper {
+    top: 0;
+    height: 100%;
+    width: 300px;
+    display: inline-block;
+    margin: 0px 10px;
+    float: left;
+}
+.list {
+    background-color: #ebecf0;
+    padding: 15px;
+    border-radius: 3px;
+    box-shadow: black 0px 0px 4px;
+}
+.task_list {
+    overflow: auto;
+    max-height: 89%;
+}
+.task {
+    background: white;
+    border-radius: 3px;
+    margin: 2px 0px 15px 2px;
+    padding: 5px;
+    box-shadow: black 0px 0px 4px;
+    cursor: pointer;
+    width: 93%;
+}
+.add_task {
+    padding: 10px 0px 0px 0px;
+}
+
+.description {
+    margin: 10px 0 10px 5px;
+}
+.time {
+    color: white;
+    background: #D3D3D3;
+    border-radius: 3px;
+    padding: 3px 10px;
+    text-shadow: 0px 0px 3px black
+}
+.status {
+    color: white;
+    border-radius: 3px;
+    padding: 3px 10px;
+    text-shadow: 0px 0px 3px black
+}
+    .not_started {
+        width: 90px;
+        background: red;
+    }
+    .working {
+        width: 65px;
+        background: orange;
+    }
+    .finished {
+        width: 65px;
+        background: green;
+    }
+
+h4 {
+    margin: 0;
+    padding: 0px 0px 10px 0px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 3px;
+}
+::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: #888;
+}
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
