@@ -31,6 +31,14 @@ function getSpecificTasks($conn, $id){
 	$result2 = $stmt->fetchAll();
 	return $result2;
 };
+function getSpecificTask($conn, $id){
+	$sql = "SELECT * FROM tasks WHERE task_id=:id";
+	$stmt = $conn->prepare($sql);
+	$stmt->bindParam(":id", $id);
+	$stmt->execute();
+	$result = $stmt->fetchAll();
+	return $result;
+}
 
 /**
 * this function is needed for "Not Started"
@@ -45,7 +53,7 @@ function wordSplitting($word){
 }
 
 /*
-* Functions for updating list contents within the database
+* CRUD functions for the lists
 */
 function createList($conn, $title){
 	$sql = "INSERT INTO list (title) VALUES (:title)";
@@ -61,8 +69,8 @@ function deleteList($conn, $id){
     $stmt->bindParam(":id", $id);
     $stmt->execute();
 
-    $conn = null;
-}
+    $conn = null; 
+} // voeg toe dat als de lijst word verwijderd dat hij ook alle tasks verwijderd die behoren tot die lijst.
 function updateList($conn, $id, $title){
 	$sql = "UPDATE list SET title=:title WHERE id=:id";
     $stmt = $conn->prepare($sql);
@@ -73,6 +81,9 @@ function updateList($conn, $id, $title){
     $conn = null;
 }
 
+/*
+* CRUD functions for the tasks within the lists
+*/
 function createTask($conn, $binding_id, $description, $status, $duration){
 	$sql = "INSERT INTO tasks (binding_id, description, status, duration) VALUES (:binding_id, :description, :status, :duration)";
 	$stmt = $conn->prepare($sql);
@@ -84,8 +95,13 @@ function createTask($conn, $binding_id, $description, $status, $duration){
 
 	$conn = null;
 }
-function deleteTask(){
+function deleteTask($conn, $id){
+	$sql = "DELETE FROM tasks WHERE task_id=:id";
+	$stmt = $conn->prepare($sql);
+	$stmt->bindParam(":id", $id);
+	$stmt->execute();
 
+	$conn = null;
 }
 function updateTask(){
 
