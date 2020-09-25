@@ -27,12 +27,14 @@ $result = getLists($conn);
                 <?php foreach($result2 as $row2) { ?>
                 <div class="task">
                     <div class="status <?php print $row2['status']; ?>"><?php wordSplitting($row2['status']); ?></div>
+                    <a href="deleteTask.php?id=<?php print $row2["id"] ?>" class="delete_list opacity"><i class="far fa-trash-alt"></i></a>
+                    <a href="updateTask.php?id=<?php print $row2["id"] ?>" class="update_list opacity"><i class="fas fa-wrench"></i></a>
                     <div class="description"><?php print $row2["description"]; ?></div>
                     <div class="time"><?php print $row2["duration"]; ?></div>
                 </div>
                 <?php } ?>
             </div>
-            <a href="" class="add_task">+ Add another task</div>
+            <a href="tasks/createTask.php?binding_id=<?php print $row['id']; ?>" class="add_task">+ Add another task</div>
         </div>
     </div>
     <?php } ?>

@@ -73,4 +73,22 @@ function updateList($conn, $id, $title){
     $conn = null;
 }
 
+function createTask($conn, $binding_id, $description, $status, $duration){
+	$sql = "INSERT INTO tasks (binding_id, description, status, duration) VALUES (:binding_id, :description, :status, :duration)";
+	$stmt = $conn->prepare($sql);
+	$stmt->bindParam(":binding_id", $binding_id);
+	$stmt->bindParam(":description", $description);
+	$stmt->bindParam(":status", $status);
+	$stmt->bindParam(":duration", $duration);
+	$stmt->execute();
+
+	$conn = null;
+}
+function deleteTask(){
+
+}
+function updateTask(){
+
+}
+
 ?>
