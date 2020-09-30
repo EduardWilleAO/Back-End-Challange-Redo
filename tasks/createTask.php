@@ -27,7 +27,7 @@ if($redirect != ""){
 		<div class="list_wrapper">
 			<div class="list">
 				<select name="status" class="" placeholder="">
-					<option class="status NotStarted">Not Started</option>
+					<option class="status NotStarted">NotStarted</option>
 					<option class="status Working">Working</option>
 					<option class="status Finished">Finished</option>
 				</select>
