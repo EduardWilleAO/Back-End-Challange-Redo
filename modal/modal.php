@@ -22,14 +22,20 @@ function getSpecificList($conn, $id){
 /**
 * Functions for returning tasks or a single task.
 */
-function getTasks($conn, $id, $sort){
-	if($sort != "" || $sort){
+function getTasks($conn, $id, $filter, $sort){
+	// requires the first stmt that prepares the conn to be in the ifs otherwise filter doesnt work. (In the AND clause if i use the $filter var it gives an error).
+	if($filter != ""){
+		$sql = 'SELECT * FROM tasks WHERE binding_id=:id AND status=:status';
+		$stmt = $conn->prepare($sql);
+		$stmt->bindParam(":status", $filter);
+	} else if($sort != ""){
 		$sql = 'SELECT * FROM tasks WHERE binding_id=:id ORDER BY duration ' . $sort;
+		$stmt = $conn->prepare($sql);
 	}  else{
 		$sql = 'SELECT * FROM tasks WHERE binding_id=:id';
+		$stmt = $conn->prepare($sql);
 	}
 
-	$stmt = $conn->prepare($sql);
 	$stmt->bindParam(":id", $id);
 	$stmt->execute();
 	$result2 = $stmt->fetchAll();

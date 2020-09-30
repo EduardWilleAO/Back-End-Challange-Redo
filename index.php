@@ -4,6 +4,7 @@ require "connect.php";
 require "modal/modal.php";
 
 $result = getLists($conn);
+$filter = $_GET["filter"];
 $sort = $_GET["sort"];
 
 ?>
@@ -37,10 +38,12 @@ $sort = $_GET["sort"];
             
                 <div class="task_list">
                     <?php 
-                        if($sort != "" || $sort){ 
-                            $result2 = getTasks($conn, $row["id"], $sort); 
+                        if($filter != ""){
+                            $result2 = getTasks($conn, $row["id"], $filter, $sort);
+                        } else if($sort != ""){ 
+                            $result2 = getTasks($conn, $row["id"], $filter, $sort); 
                         }  else {
-                            $result2 = getTasks($conn, $row["id"], $sort);
+                            $result2 = getTasks($conn, $row["id"], $filter, $sort);
                         } 
                     ?>
                     <?php foreach($result2 as $row2) { ?>
