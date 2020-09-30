@@ -74,6 +74,11 @@ function deleteList($conn, $id){
     $stmt->bindParam(":id", $id);
     $stmt->execute();
 
+	$sql = "DELETE FROM tasks WHERE binding_id=:id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+
     $conn = null; 
 }; // voeg toe dat als de lijst word verwijderd dat hij ook alle tasks verwijderd die behoren tot die lijst.
 function updateList($conn, $id, $title){
