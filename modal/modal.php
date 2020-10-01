@@ -56,6 +56,16 @@ function wordSplitting($word){
 		echo $row . " ";
 	}
 };
+function FilterAndSort($conn, $id, $filter, $sort){
+	if(isset($filter) != false){
+		$result2 = getTasks($conn, $id, $filter, $sort);
+	} else if(isset($sort) != false){ 
+		$result2 = getTasks($conn, $id, $filter, $sort); 
+	}  else {
+		$result2 = getTasks($conn, $id, $filter, $sort);
+	} 
+	return $result2;
+}
 
 /*
 * CRUD functions for the lists

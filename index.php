@@ -37,15 +37,7 @@ $sort = $_GET["sort"];
                 </h4>
             
                 <div class="task_list">
-                    <?php 
-                        if($filter != ""){
-                            $result2 = getTasks($conn, $row["id"], $filter, $sort);
-                        } else if($sort != ""){ 
-                            $result2 = getTasks($conn, $row["id"], $filter, $sort); 
-                        }  else {
-                            $result2 = getTasks($conn, $row["id"], $filter, $sort);
-                        } 
-                    ?>
+                    <?php $result2 = filterAndSort($conn, $row["id"], $filter, $sort); ?>
                     <?php foreach($result2 as $row2) { ?>
                     <div class="task">
                         <div class="status <?php print $row2['status']; ?>"><?php wordSplitting($row2['status']); ?></div>
