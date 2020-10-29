@@ -23,15 +23,17 @@ body {
 #navBar {
     background: #171c24;
     width: 100vw;
-    height: 40px;
+    height: 45px;
     position: fixed;
     top: 0;
     padding: 0px 40px;
+    overflow: hidden;
 }
     #navBar > div {
         font-size: 30px;
         display: inline-block;
         color: white;
+        margin: 0px 0px 15px 0px;
     }
     #navBar > a {
         font-size: 25px;
@@ -121,7 +123,7 @@ body {
     text-shadow: 0px 0px 3px black;
 }
     .NotStarted {
-        width: 91px;
+        width: 95px;
         background: red;
     }
     .Working {
